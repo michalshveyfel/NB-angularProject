@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="div">
+  <h1  style="font-size:xx-large;">טופס הרשמה
+  <img class="img" alt="Angular Logo" src="assets/logo.jpg" /></h1>
+  <p>שלום {{user.nameFirst}}, אנא מלאי את הפרטים הבאים</p>
+  <form [formGroup]="form" style="direction: rtl;">
+    <div class="inputs">
+      <label for="name">שם:</label>
+      <input type="text" id="name" [(ngModel)]="user.nameFirst"  name="nameFirst"  formControlName="nameFirst"/>
+      <p class="alert" *ngIf="!form.controls['nameFirst'].valid && form.controls['nameFirst'].touched">The name is required</p>
+    </div>
+    <div class="inputs">
+      <label for="family">משפחה:</label>
+      <input  type="text" id="family" [(ngModel)]="user.family"name="family" formControlName="family" />
+      <p class="alert" *ngIf="!form.controls['family'].valid && form.controls['family'].touched">The family is required</p>
+    </div>
+    <div class="inputs">
+      <label for="city">עיר מגורים:</label>
+      <input  type="text"  [(ngModel)]="user.city" formControlName="city"/>
+    
+      <p class="alert" *ngIf="!form.controls['city'].valid && form.controls['city'].touched">The city is required</p>
+    </div>
+    <div><button type="submit" [disabled]="!form.valid" (click)="save()">שלח</button></div>
+  
+    
+  </form>
+</div>
+<router-outlet></router-outlet>
